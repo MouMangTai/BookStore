@@ -17,10 +17,12 @@
 	.product{
 		float:left;
 		margin-left:30px;
-		margin-top:15px;
-		width:14%;
-		height:35%;
+		margin-top:30px;
+		width:190px;
 	}
+	a:link{color:#202020;text-decoration:none;}
+	a:visited{color:#202020;text-decoration:none;}
+	a:hover{color:#FF6600;}
 </style>
 <body>
 	
@@ -37,12 +39,12 @@
 		<c:forEach items="${products }" var="product">
 			<div class="product" >
 			    <center>
-			    <img src="${product.image_src } " width="100%">
+			    <a href="ShowProduct?id=${product.id }"><img src="${product.image_src } " width="100%" style="cursor:pointer;" ></a>
 			    </center>
 			    <hr color="gray">
 			    <div style="float:left;margin-left:-10px;"><font size="3" color="FF6600">￥${product.value }</font></div>
 			    <div style="float:right"><font size="1" color="FF6600">剩余${product.left_number }本</font></div>
-			    <div style="margin-top:30px;height:34px;overflow: hidden; "><font size="2" >${ product.name}</font></div>
+			    <div style="margin-top:30px;height:34px;overflow: hidden; "><font size="2" ><a style="cursor:pointer;" class="no_underline" href="ShowProduct?id=${product.id }">${ product.name}</a></font></div>
 				
 				
 				

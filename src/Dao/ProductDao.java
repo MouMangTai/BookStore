@@ -43,6 +43,26 @@ public class ProductDao {
 			e.printStackTrace();
 		}
 	}
+	public Product getProduct(int id){
+		Product p = null;
+		String sql = "select * from product where id = "+id;
+		try(Connection c = getConnection();Statement s = c.createStatement()){
+			ResultSet rs = s.executeQuery(sql);
+			while(rs.next()){
+				p = new Product();
+				p.setId(id);
+				p.setName(rs.getString(2));
+				p.setValue(rs.getDouble(3));
+				p.setLeft_number(rs.getInt(4));
+				p.setMessage(rs.getString(5));
+				p.setImage_src(rs.getString(6));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return p;
+	}
 	public List<Product> listProduct(int start,int end){
 		List<Product> L = new ArrayList<Product>();
 		String sql = "select * from product order by id limit "+start+","+end;
