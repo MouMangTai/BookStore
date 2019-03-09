@@ -1,26 +1,31 @@
 package Servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bean.OrderItem;
 import Bean.Product;
+import Dao.OrderItemDao;
 import Dao.ProductDao;
 
 /**
- * Servlet implementation class DeleteProductServlet
+ * Servlet implementation class OrderItemListServlet
  */
-@WebServlet("/DeleteProductServlet")
-public class DeleteProductServlet extends HttpServlet {
+@WebServlet("/OrderItemListServlet")
+public class OrderItemListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteProductServlet() {
+    public OrderItemListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,10 +34,11 @@ public class DeleteProductServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id_ =  request.getParameter("product_id");
-		int id = Integer.parseInt(id_);
-		new ProductDao().deleteProduct(id);
-		response.sendRedirect("listProduct");
+		int user_id = Integer.parseInt(request.getParameter("user_id"));
+		List<OrderItem> L= new OrderItemDao().getOrderItem(user_id);
+		
+		request.getSession().setAttribute("ois",L);
+		response.sendRedirect("cartList.jsp");
 	}
 
 	/**

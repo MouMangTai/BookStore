@@ -29,7 +29,7 @@ public class ShowProductServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
+		String id = request.getParameter("product_id");
 		int w = 0;
 		try{
 			w = Integer.parseInt(id);

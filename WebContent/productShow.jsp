@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>图书</title>
 </head>
 <style>
 	img{
@@ -99,9 +99,9 @@
 		font-size:20px; 
 	}
 	
-	
 </style>
 <body>
+	<jsp:include page="DaoHangLan.jsp" flush="true"/>
 	<div ><img src="${product.image_src }"></div>
 	<div id="name">${product.name }</div>
 	<div id="dingjia">定价:</div>
@@ -109,8 +109,11 @@
 	<div id="sysl">剩余数量:</div>
 	<div id="left_number">${product.left_number }</div>
 	<div id="gmsl">购买数量:</div>
-	<div id="num"> <input size="2px"type="number" value="1"></div>
+	<form action="addOrderItem?product_id=${product.id}&user_id=${user.id}" method="post">
+	<div id="num"> <input size="2px" type="number" value="1" name="num" ></div>
 	<button id="buy">购买 </button>
-	<button id="add">加入购物车 </button>
+	<!--  <button id="add" ><a href="addOrderItem?product_id=${product.id}&user_id=${user.id}">加入购物车 </a></button>-->
+	<div id="add"><input type="submit" onclick="return judge();"value="加入购物车"></div>
+	</form>
 </body>
 </html>
