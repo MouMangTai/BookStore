@@ -8,7 +8,6 @@
     <servlet-name>ListProductServlet</servlet-name>
     <url-pattern>/listProduct</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>ShowProductServlet</servlet-name>
     <servlet-class>Servlet.ShowProductServlet</servlet-class>
@@ -17,4 +16,28 @@
     <servlet-name>ShowProductServlet</servlet-name>
     <url-pattern>/ShowProduct</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>AddProductServlet</servlet-name>
+    <servlet-class>Servlet.addProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddProductServlet</servlet-name>
+    <url-pattern>/AddProduct</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleteProductServlet</servlet-name>
+    <servlet-class>Servlet.DeleteProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteProductServlet</servlet-name>
+    <url-pattern>/DeleteProduct</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <filter-name>EncodingFilter</filter-name>
+    <filter-class>Filter.EncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>EncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>

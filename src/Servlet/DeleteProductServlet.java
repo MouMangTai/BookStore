@@ -1,8 +1,6 @@
 package Servlet;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,16 +11,16 @@ import Bean.Product;
 import Dao.ProductDao;
 
 /**
- * Servlet implementation class ListProductServlet
+ * Servlet implementation class DeleteProductServlet
  */
-@WebServlet("/ListProductServlet")
-public class ListProductServlet extends HttpServlet {
+@WebServlet("/DeleteProductServlet")
+public class DeleteProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListProductServlet() {
+    public DeleteProductServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,32 +29,10 @@ public class ListProductServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int start = 0;
-		int count = 12;
-		
-		try{
-			start = Integer.parseInt(request.getParameter("start"));
-		}catch(NumberFormatException e){
-			
-		}
-
-		int pre = start-count;
-		int next = start+count;
-		int total = new ProductDao().getTotal();
-		int end =0;
-		if(total%count==0){
-			end = total-count;
-		}else{
-			end = total - total%count;
-		}
-		if(pre<0) pre=0;
-		if(next>end) next = end;
-		List<Product> L = new ProductDao().listProduct(start,count);
-		request.setAttribute("products", L);
-		request.setAttribute("pre", pre);
-		request.setAttribute("next", next);
-		request.setAttribute("end", end);
-		request.getRequestDispatcher("productList.jsp").forward(request, response);
+		String id_ =  request.getParameter("id");
+		int id = Integer.parseInt(id_);
+		new ProductDao().deleteProduct(id);
+		response.sendRedirect("listProduct");
 	}
 
 	/**

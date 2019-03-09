@@ -1,8 +1,6 @@
 package Servlet;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,16 +11,16 @@ import Bean.Product;
 import Dao.ProductDao;
 
 /**
- * Servlet implementation class ListProductServlet
+ * Servlet implementation class addProductServlet
  */
-@WebServlet("/ListProductServlet")
-public class ListProductServlet extends HttpServlet {
+@WebServlet("/addProductServlet")
+public class addProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListProductServlet() {
+    public addProductServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,32 +29,21 @@ public class ListProductServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int start = 0;
-		int count = 12;
-		
-		try{
-			start = Integer.parseInt(request.getParameter("start"));
-		}catch(NumberFormatException e){
-			
-		}
-
-		int pre = start-count;
-		int next = start+count;
-		int total = new ProductDao().getTotal();
-		int end =0;
-		if(total%count==0){
-			end = total-count;
-		}else{
-			end = total - total%count;
-		}
-		if(pre<0) pre=0;
-		if(next>end) next = end;
-		List<Product> L = new ProductDao().listProduct(start,count);
-		request.setAttribute("products", L);
-		request.setAttribute("pre", pre);
-		request.setAttribute("next", next);
-		request.setAttribute("end", end);
-		request.getRequestDispatcher("productList.jsp").forward(request, response);
+		String name = request.getParameter("name");
+		String jiage = request.getParameter("jiage");
+		String kucun = request.getParameter("kucun");
+		String beizhu = request.getParameter("beizhu");
+		String tupian = request.getParameter("tupian");
+		double jiage_  = Double.parseDouble(jiage);
+		int kucun_ = Integer.parseInt(kucun);
+		Product p = new Product();
+		p.setName(name);
+		p.setValue(jiage_);
+		p.setLeft_number(kucun_);
+		p.setMessage(beizhu);
+		p.setImage_src(tupian);
+		new ProductDao().addProduct(p);
+		response.sendRedirect("listProduct");
 	}
 
 	/**
