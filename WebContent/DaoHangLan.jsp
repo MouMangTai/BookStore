@@ -41,7 +41,7 @@
 <body>
 	<ul>
 		<li ><a href="listProduct">图书列表</a></li>
-		<c:if test="${!empty user }"><li ><a href="productAdd.jsp">添加图书</a></li></c:if>
+		<c:if test="${user.isadmin==1 }"><li ><a href="productAdd.jsp">添加图书</a></li></c:if>
 		<c:if test="${empty user }"><li style="float:right" ><a href="Login.jsp">登陆</a></li></c:if>
 		<c:if test="${!empty user }"><li style="float:right" ><a href="Logoff">注销</a></li></c:if>
 		<c:if test="${!empty user }"><li style="float:right" ><a href="listOrderItem?user_id=${user.id }">购物车</a></li></c:if>

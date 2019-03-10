@@ -30,6 +30,7 @@
 			<tr><td>邮箱:</td><td><input type="text" name="mail" id="mail" value="${LastLoginMail }" placeholder="输入邮箱" class="form-control"></td></tr>
 			<tr><td>密码:</td><td><input type="password" name="password" id="password"  placeholder="输入密码" class="form-control"></td></tr>
 			<tr><td colspan="2"><input  class="btn btn-block" type="submit" value="登陆" onclick="return judge();"></td></tr>
+			<tr><td colspan="2"><div style="float:right;"><input name="checkadmin"type="checkbox">管理员登陆</div></td></tr>
 		</form>
 	</table>
 </body>

@@ -36,6 +36,7 @@ public class UserDao {
 				u.setPassword(rs.getString(3));
 				u.setName(rs.getString(4));
 				u.setId(rs.getInt(1));
+				u.setIsadmin(rs.getInt(5));
 			}
 			
 		} catch (SQLException e) {
@@ -56,6 +57,7 @@ public class UserDao {
 				u.setMail(rs.getString(2));
 				u.setPassword(rs.getString(3));
 				u.setName(rs.getString(4));
+				u.setIsadmin(rs.getInt(5));
 			}
 			
 		} catch (SQLException e) {

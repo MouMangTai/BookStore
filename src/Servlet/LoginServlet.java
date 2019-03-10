@@ -34,26 +34,57 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String mail = request.getParameter("mail");
 		String password = request.getParameter("password");
+		String[] isadmin = request.getParameterValues("checkadmin");
 		request.getSession().setAttribute("LastLoginMail", mail);
-		User u = new UserDao().getUser(mail);
-		if(u==null){
-			PrintWriter out = response.getWriter();
-			String a = URLEncoder.encode("用户不存在", "UTF-8"); 
-			out.print("<script>alert(decodeURIComponent('"+a+"'));window.location.href='Login.jsp'</script>");
-			//response.sendRedirect("Login.jsp");
-		}else{
-			u = new UserDao().getUser(mail,password);
+		if(isadmin==null){
+			User u = new UserDao().getUser(mail);
 			if(u==null){
 				PrintWriter out = response.getWriter();
-				String a = URLEncoder.encode("密码错误", "UTF-8"); 
+				String a = URLEncoder.encode("用户不存在", "UTF-8"); 
 				out.print("<script>alert(decodeURIComponent('"+a+"'));window.location.href='Login.jsp'</script>");
+				//response.sendRedirect("Login.jsp");
 			}else{
-				request.getSession().setAttribute("user", u);
+				u = new UserDao().getUser(mail,password);
+				if(u==null){
+					PrintWriter out = response.getWriter();
+					String a = URLEncoder.encode("密码错误", "UTF-8"); 
+					out.print("<script>alert(decodeURIComponent('"+a+"'));window.location.href='Login.jsp'</script>");
+				}else{
+					request.getSession().setAttribute("user", u);
+					PrintWriter out = response.getWriter();
+					String a = URLEncoder.encode("登陆成功", "UTF-8"); 
+					out.print("<script>alert(decodeURIComponent('"+a+"'));window.location.href='listProduct'</script>");
+				}
+			}
+		}else{
+			User u = new UserDao().getUser(mail);
+			if(u==null){
 				PrintWriter out = response.getWriter();
-				String a = URLEncoder.encode("登陆成功", "UTF-8"); 
-				out.print("<script>alert(decodeURIComponent('"+a+"'));window.location.href='listProduct'</script>");
+				String a = URLEncoder.encode("用户不存在", "UTF-8"); 
+				out.print("<script>alert(decodeURIComponent('"+a+"'));window.location.href='Login.jsp'</script>");
+				//response.sendRedirect("Login.jsp");
+			}else{
+				if(u.getIsadmin()==1){
+					u = new UserDao().getUser(mail,password);
+					if(u==null){
+						PrintWriter out = response.getWriter();
+						String a = URLEncoder.encode("密码错误", "UTF-8"); 
+						out.print("<script>alert(decodeURIComponent('"+a+"'));window.location.href='Login.jsp'</script>");
+					}else{
+						request.getSession().setAttribute("user", u);
+						PrintWriter out = response.getWriter();
+						String a = URLEncoder.encode("登陆成功", "UTF-8"); 
+						out.print("<script>alert(decodeURIComponent('"+a+"'));window.location.href='listProduct'</script>");
+					}
+				}else{
+					PrintWriter out = response.getWriter();
+					String a = URLEncoder.encode("该用户不是管理员", "UTF-8"); 
+					out.print("<script>alert(decodeURIComponent('"+a+"'));window.location.href='Login.jsp'</script>");
+				}
+				
 			}
 		}
+		
 	}
 
 	/**

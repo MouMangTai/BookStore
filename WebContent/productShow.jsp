@@ -6,6 +6,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>图书</title>
 </head>
+<script>
+	function jia(){
+		var a = document.getElementById("number").value;
+		a = parseInt(a);
+		a++;
+		if(a>=99) a = 99;
+		document.getElementById("number").value = a.toString();
+	}
+	function jian(){
+		var a = document.getElementById("number").value;
+		a = parseInt(a);
+		a--;
+		if(a<=1) a = 1;
+		document.getElementById("number").value = a.toString();
+	}
+</script>
 <style>
 	img{
 		border:1px solid #D8D8D8;
@@ -75,8 +91,8 @@
 		position:absolute;
 		left:650px;
 		top:332px;
-		width:600px;
-		height:40px;
+		width:100px;
+		height:50px;
 		overflow: hidden;
 		font-size:20px; 
 	}
@@ -110,7 +126,16 @@
 	<div id="left_number">${product.left_number }</div>
 	<div id="gmsl">购买数量:</div>
 	<form action="addOrderItem?product_id=${product.id}&user_id=${user.id}" method="post">
-	<div id="num"> <input size="2px" type="number" value="1" name="num" ></div>
+	<div id="num"> 
+	
+	
+	<button type="button"style="width:20px;height:30px;" onclick="return jian();">-</button>
+	<input  style="width:30px;height:30px;" type="text" value="1" name="number" id="number">
+	<button type="button"style="width:20px;height:30px;" onclick="return jia();">+</button>
+	
+	
+	</div>
+	
 	<button id="buy">购买 </button>
 	<!--  <button id="add" ><a href="addOrderItem?product_id=${product.id}&user_id=${user.id}">加入购物车 </a></button>-->
 	<div id="add"><input type="submit" onclick="return judge();"value="加入购物车"></div>

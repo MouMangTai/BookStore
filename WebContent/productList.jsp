@@ -20,7 +20,7 @@
 <style>
     .fenye{
     position:absolute;
-    top:120%;
+    top:700px;
     margin-bottom:50px;
     }
 	.product{
@@ -51,7 +51,7 @@
 			    <div style="float:left;margin-left:-10px;"><font size="3" color="FF6600">￥${product.value }</font></div>
 			    <div style="float:right"><font size="1" color="FF6600">剩余${product.left_number }本</font></div>
 			    <div style="margin-top:50px;height:34px;overflow: hidden; "><font size="2" ><a style="cursor:pointer;" class="no_underline" href="ShowProduct?product_id=${product.id }">${ product.name}</a></font></div>
-				<c:if test="${!empty user }"><a href="DeleteProduct?product_id=${product.id }"><button onclick="return judge()">删除</button></a></c:if>
+				<c:if test="${user.isadmin==1 }"><a href="DeleteProduct?product_id=${product.id }"><button onclick="return judge()">删除</button></a></c:if>
 				
 				
 			</div>

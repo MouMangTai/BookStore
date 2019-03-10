@@ -7,6 +7,13 @@ public class User implements Serializable{
 	String mail;
 	String password;
 	String name;
+	int isadmin ;
+	public int getIsadmin() {
+		return isadmin;
+	}
+	public void setIsadmin(int isadmin) {
+		this.isadmin = isadmin;
+	}
 	public int getId() {
 		return id;
 	}

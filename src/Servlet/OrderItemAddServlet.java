@@ -38,10 +38,11 @@ public class OrderItemAddServlet extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			String a = URLEncoder.encode("请先登录", "UTF-8"); 
 			out.print("<script>alert(decodeURIComponent('"+a+"'));window.location.href='Login.jsp'</script>");
+			return ;
 		}
 		int user_id = Integer.parseInt(request.getParameter("user_id"));
 		int product_id = Integer.parseInt(request.getParameter("product_id"));
-		int num = Integer.parseInt(request.getParameter("num"));
+		int num = Integer.parseInt(request.getParameter("number"));
 		List<OrderItem> L = new OrderItemDao().listOrderItem();
 		boolean flag = false;
 		for(OrderItem oi:L){
