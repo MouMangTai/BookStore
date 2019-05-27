@@ -22,11 +22,11 @@
 
 #### 项目代码结构
 
-![1558940402169](C:\Users\Y\AppData\Roaming\Typora\typora-user-images\1558940402169.png)
+![1558940402169](https://github.com/MouMangTai/BookStore/blob/master/imgs/TIM%E6%88%AA%E5%9B%BE20190527150009.jpg?raw=true)
 
 #### 数据库
 
-![1558940484473](C:\Users\Y\AppData\Roaming\Typora\typora-user-images\1558940484473.png)
+![1558940484473](https://github.com/MouMangTai/BookStore/blob/master/imgs/TIM%E6%88%AA%E5%9B%BE20190527150136.jpg?raw=true)
 
 #### 未完成
 
