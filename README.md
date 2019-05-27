@@ -2,23 +2,23 @@
 
 ##### 登陆界面
 
-![1558939914915](C:\Users\Y\AppData\Roaming\Typora\typora-user-images\1558939914915.png)
+![1558939914915](https://github.com/MouMangTai/BookStore/blob/master/imgs/TIM%E6%88%AA%E5%9B%BE20190527145206.jpg?raw=true)
 
-![1558939960228](C:\Users\Y\AppData\Roaming\Typora\typora-user-images\1558939960228.png)
+![1558939960228](https://github.com/MouMangTai/BookStore/blob/master/imgs/TIM%E6%88%AA%E5%9B%BE20190527145225.jpg?raw=true)
 
 ##### 所有商品页面（具有分页功能）
 
-![1558939997598](C:\Users\Y\AppData\Roaming\Typora\typora-user-images\1558939997598.png)
+![1558939997598](https://github.com/MouMangTai/BookStore/blob/master/imgs/TIM%E6%88%AA%E5%9B%BE20190527145324.jpg?raw=true)
 
-![1558940127245](C:\Users\Y\AppData\Roaming\Typora\typora-user-images\1558940127245.png)
+![1558940127245](https://github.com/MouMangTai/BookStore/blob/master/imgs/TIM%E6%88%AA%E5%9B%BE20190527145513.jpg?raw=true)
 
 ##### 单个商品页面
 
-![1558940223103](C:\Users\Y\AppData\Roaming\Typora\typora-user-images\1558940223103.png)
+![1558940223103](https://github.com/MouMangTai/BookStore/blob/master/imgs/TIM%E6%88%AA%E5%9B%BE20190527145708.jpg?raw=true)
 
 ##### 购物车页面（利用ajax无刷新更新）
 
-![1558940294647](C:\Users\Y\AppData\Roaming\Typora\typora-user-images\1558940294647.png)
+![1558940294647](https://github.com/MouMangTai/BookStore/blob/master/imgs/TIM%E6%88%AA%E5%9B%BE20190527152105.jpg?raw=true)
 
 #### 项目代码结构
 
