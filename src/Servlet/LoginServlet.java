@@ -40,14 +40,14 @@ public class LoginServlet extends HttpServlet {
 			User u = new UserDao().getUser(mail);
 			if(u==null){
 				PrintWriter out = response.getWriter();
-				String a = URLEncoder.encode("鐢ㄦ埛涓嶅瓨鍦�", "UTF-8"); 
+				String a = URLEncoder.encode("用户不存在", "UTF-8"); 
 				out.print("<script>alert(decodeURIComponent('"+a+"'));window.location.href='Login.jsp'</script>");
 				//response.sendRedirect("Login.jsp");
 			}else{
 				u = new UserDao().getUser(mail,password);
 				if(u==null){
 					PrintWriter out = response.getWriter();
-					String a = URLEncoder.encode("瀵嗙爜閿欒", "UTF-8"); 
+					String a = URLEncoder.encode("密码输入错误", "UTF-8"); 
 					out.print("<script>alert(decodeURIComponent('"+a+"'));window.location.href='Login.jsp'</script>");
 				}else{
 					request.getSession().setAttribute("user", u);
@@ -60,7 +60,7 @@ public class LoginServlet extends HttpServlet {
 			User u = new UserDao().getUser(mail);
 			if(u==null){
 				PrintWriter out = response.getWriter();
-				String a = URLEncoder.encode("鐢ㄦ埛涓嶅瓨鍦�", "UTF-8"); 
+				String a = URLEncoder.encode("用户不存在", "UTF-8"); 
 				out.print("<script>alert(decodeURIComponent('"+a+"'));window.location.href='Login.jsp'</script>");
 				//response.sendRedirect("Login.jsp");
 			}else{
@@ -69,7 +69,7 @@ public class LoginServlet extends HttpServlet {
 					
 					if(u==null){
 						PrintWriter out = response.getWriter();
-						String a = URLEncoder.encode("瀵嗙爜閿欒", "UTF-8"); 
+						String a = URLEncoder.encode("密码输入错误", "UTF-8"); 
 						out.print("<script>alert(decodeURIComponent('"+a+"'));window.location.href='Login.jsp'</script>");
 					}else{
 						request.getSession().setAttribute("user", u);
