@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Bean.Product;
+import Bean.Type;
 import Dao.ProductDao;
+import Dao.TypeDao;
 
 /**
  * Servlet implementation class ListProductServlet
@@ -51,8 +53,17 @@ public class ListProductServlet extends HttpServlet {
 		}
 		if(pre<0) pre=0;
 		if(next>end) next = end;
-		List<Product> L = new ProductDao().listProduct(start,count);
+		String typeid = request.getParameter("typeId");
+		List<Product> L = null;
+		if(typeid==null||typeid.equals("")) {
+			L = new ProductDao().listProduct(start,count);
+		}
+		else {
+			L = new ProductDao().listProductByTypeId(start,count,Integer.parseInt(typeid));
+		}
 		request.setAttribute("products", L);
+		List<Type> T = new TypeDao().listType();
+		request.setAttribute("types", T);
 		request.setAttribute("pre", pre);
 		request.setAttribute("next", next);
 		request.setAttribute("end", end);

@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Bean.Product;
+import Bean.Type;
 import Dao.ProductDao;
+import Dao.TypeDao;
 
 /**
  * Servlet implementation class addProductServlet
@@ -34,6 +36,7 @@ public class addProductServlet extends HttpServlet {
 		String kucun = request.getParameter("kucun");
 		String beizhu = request.getParameter("beizhu");
 		String tupian = request.getParameter("tupian");
+		String type = request.getParameter("type");
 		double jiage_  = Double.parseDouble(jiage);
 		int kucun_ = Integer.parseInt(kucun);
 		Product p = new Product();
@@ -42,6 +45,8 @@ public class addProductServlet extends HttpServlet {
 		p.setLeft_number(kucun_);
 		p.setMessage(beizhu);
 		p.setImage_src(tupian);
+		Type t = new TypeDao().getType(Integer.parseInt(type));
+		p.setType(t);
 		new ProductDao().addProduct(p);
 		response.sendRedirect("listProduct");
 	}

@@ -9,6 +9,13 @@ public class Product implements Serializable{
 	private int left_number;
 	private String message;
 	private String image_src;
+	private Type type;
+	public Type getType() {
+		return type;
+	}
+	public void setType(Type type) {
+		this.type = type;
+	}
 	public int getId() {
 		return id;
 	}

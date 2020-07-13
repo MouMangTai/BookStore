@@ -12,6 +12,7 @@ import java.util.List;
 import org.eclipse.jdt.internal.compiler.batch.Main;
 
 import Bean.Product;
+import Bean.Type;
 
 public class ProductDao {
 	public ProductDao(){
@@ -42,13 +43,14 @@ public class ProductDao {
 		return total;
 	}
 	public void addProduct(Product p){
-		String sql = "insert into product(name, value, left_number,message,image_src) values(?,?,?,?,?)";
+		String sql = "insert into product(name, value, left_number,message,image_src,typeid) values(?,?,?,?,?,?)";
 		try(Connection c = getConnection();PreparedStatement ps = c.prepareStatement(sql)){
 			ps.setString(1, p.getName());
 			ps.setDouble(2, p.getValue());
 			ps.setInt(3, p.getLeft_number());
 			ps.setString(4, p.getMessage());
 			ps.setString(5, p.getImage_src());
+			ps.setInt(6, p.getType().getId());
 			ps.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -71,12 +73,14 @@ public class ProductDao {
 			ResultSet rs = s.executeQuery(sql);
 			while(rs.next()){
 				p = new Product();
-				p.setId(id);
+				p.setId(rs.getInt(1));
 				p.setName(rs.getString(2));
 				p.setValue(rs.getDouble(3));
 				p.setLeft_number(rs.getInt(4));
 				p.setMessage(rs.getString(5));
 				p.setImage_src(rs.getString(6));
+				Type t = new TypeDao().getType(rs.getInt(7));
+				p.setType(t);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -97,6 +101,38 @@ public class ProductDao {
 				p.setLeft_number(rs.getInt(4));
 				p.setMessage(rs.getString(5));
 				p.setImage_src(rs.getString(6));
+
+				Type t = new TypeDao().getType(rs.getInt(7));
+				p.setType(t);
+				L.add(p);
+			}
+			rs.close();
+			s.close();
+			c.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return L;
+	}
+	public List<Product> listProductByTypeId(int start,int end,int id){
+		List<Product> L = new ArrayList<Product>();
+		String sql = "select * from product  where typeid="+id+" limit "+start+","+end;
+		try(Connection c = getConnection();Statement s = c.createStatement()){
+			ResultSet rs = s.executeQuery(sql);
+			
+			while(rs.next()){
+				Product p = new Product();
+				p.setId(rs.getInt(1));
+				p.setName(rs.getString(2));
+				p.setValue(rs.getDouble(3));
+				p.setLeft_number(rs.getInt(4));
+				p.setMessage(rs.getString(5));
+				p.setImage_src(rs.getString(6));
+
+				Type t = new TypeDao().getType(rs.getInt(7));
+				p.setType(t);
 				L.add(p);
 			}
 			rs.close();

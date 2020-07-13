@@ -41,6 +41,12 @@
 			</tr>
 		</c:forEach>
 	</table>-->
+	<div>
+		<c:forEach items="${types }" var="type">
+			<a href="listProduct?typeId=${type.id }">${type.typeName } </a>
+			
+		</c:forEach>
+	</div>
 	<div id="listProduct"  >
 		<c:forEach items="${products }" var="product">
 			<div class="product" >
@@ -51,9 +57,9 @@
 			    <div style="float:left;margin-left:-10px;"><font size="3" color="FF6600">￥${product.value }</font></div>
 			    <div style="float:right"><font size="1" color="FF6600">剩余${product.left_number }本</font></div>
 			    <div style="margin-top:50px;height:34px;overflow: hidden; "><font size="2" ><a style="cursor:pointer;" class="no_underline" href="ShowProduct?product_id=${product.id }">${ product.name}</a></font></div>
+				<div style="float:right">类别：${product.type.typeName }</div>
 				<c:if test="${user.isadmin==1 }"><a href="DeleteProduct?product_id=${product.id }"><button onclick="return judge()">删除</button></a></c:if>
-				
-				
+
 			</div>
 			
 			

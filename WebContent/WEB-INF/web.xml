@@ -8,6 +8,24 @@
     <servlet-name>ListProductServlet</servlet-name>
     <url-pattern>/listProduct</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>productAddServlet</servlet-name>
+    <servlet-class>Servlet.productAddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>productAddServlet</servlet-name>
+    <url-pattern>/ADDJSP</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>addTypeServlet</servlet-name>
+    <servlet-class>Servlet.addTypeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addTypeServlet</servlet-name>
+    <url-pattern>/AddType</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>ShowProductServlet</servlet-name>
     <servlet-class>Servlet.ShowProductServlet</servlet-class>
@@ -64,7 +82,7 @@
     <servlet-name>addOrderItemServlet</servlet-name>
     <url-pattern>/addOrderItem</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>deleteOrderItemServlet</servlet-name>
     <servlet-class>Servlet.OrderItemDeleteServlet</servlet-class>
   </servlet>

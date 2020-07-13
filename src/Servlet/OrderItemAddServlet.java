@@ -44,9 +44,14 @@ public class OrderItemAddServlet extends HttpServlet {
 		int product_id = Integer.parseInt(request.getParameter("product_id"));
 		int num = Integer.parseInt(request.getParameter("number"));
 		List<OrderItem> L = new OrderItemDao().listOrderItem();
+		System.out.println(L);
 		boolean flag = false;
 		for(OrderItem oi:L){
+			//System.out.println(oi.getUser_id());
+			System.out.println(oi.getProduct().getId());
 			if(oi.getProduct().getId()==product_id&&oi.getUser_id()==user_id){
+				
+				
 				new OrderItemDao().updateOrderItem(product_id, oi.getNumber()+num, user_id);
 				flag = true;
 				break;

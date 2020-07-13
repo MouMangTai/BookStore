@@ -2,7 +2,7 @@ package Bean;
 
 import java.io.Serializable;
 
-public class OrderItem implements Serializable{
+public class OrderItem {
 	Product product;
 	int number;
 	int user_id;
